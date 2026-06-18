@@ -23,13 +23,14 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Plumbing, Drain, Sewer & Septic Experts | Conejo Bros Plumbing — Thousand Oaks, CA",
+  metadataBase: new URL("https://call.911restorationbakersfield.com"),
+  title: "Emergency Water, Fire & Mold Damage Restoration in Bakersfield, CA | 911 Restoration",
   description:
-    "Septic tank service, drain cleaning, hydro jetting, trenchless sewer repair, and 24/7 emergency plumbing across Thousand Oaks and Ventura County. One of very few CA companies handling septic design, geological testing, and installation in-house. Request your free quote.",
+    "24/7 emergency disaster restoration in Bakersfield & Kern County. 45-minute response, IICRC-certified, bilingual (Hablamos Español), free visual inspection, and direct insurance claim support. Water, fire & mold damage. Call (661) 416-8390.",
   openGraph: {
-    title: "Plumbing, Drain, Sewer & Septic Experts | Conejo Bros Plumbing",
+    title: "Emergency Water, Fire & Mold Damage Restoration in Bakersfield, CA | 911 Restoration",
     description:
-      "Septic, drain, sewer, and emergency plumbing in Thousand Oaks & the Conejo Valley. Trenchless no-dig repair, hydro jetting, and in-house septic design. Free quote — same-day response.",
+      "24/7 emergency disaster restoration in Bakersfield & Kern County. 45-minute response, IICRC-certified, bilingual (Hablamos Español), free visual inspection, and direct insurance claim support. Call (661) 416-8390.",
     type: "website",
   },
 };
@@ -45,20 +46,37 @@ export default function RootLayout({
       className={`${outfit.variable} ${barlow.variable} ${dmSans.variable}`}
     >
       <head>
-        <meta name="mega-site-id" content="c4c1e2bb-8d8c-4255-a90a-27adefc7fc8f" />
+        <meta name="mega-site-id" content="fa3156d9-b3e9-4b18-b1a2-fb8202bbbbfd" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.MEGA_TAG_CONFIG={siteKey:"uqousx988ir14mdy",siteId:"c4c1e2bb-8d8c-4255-a90a-27adefc7fc8f",gtmId:"GTM-TDVDDXHW"};window.API_ENDPOINT="https://optimizer.gomega.ai";window.TRACKING_API_ENDPOINT="https://events-api.gomega.ai";`,
+            __html: `window.MEGA_TAG_CONFIG={siteKey:"546m6hgf5k0aozq2",siteId:"fa3156d9-b3e9-4b18-b1a2-fb8202bbbbfd",gtmId:"GTM-W9ZK7BXB"};window.API_ENDPOINT="https://optimizer.gomega.ai";window.TRACKING_API_ENDPOINT="https://events-api.gomega.ai";`,
           }}
         />
         <script
           id="optimizer-script"
           src="https://cdn.gomega.ai/scripts/optimizer.min.js"
-          data-site-id="c4c1e2bb-8d8c-4255-a90a-27adefc7fc8f"
+          data-site-id="fa3156d9-b3e9-4b18-b1a2-fb8202bbbbfd"
           async
         />
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W9ZK7BXB');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
       </head>
       <body className="antialiased">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-W9ZK7BXB"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         {children}
         <Script src="https://572388.tctm.co/t.js" strategy="afterInteractive" />
       </body>

@@ -12,16 +12,6 @@ const base = (className: string) => ({
   strokeLinejoin: "round" as const,
 });
 
-export function SepticIcon({ className = "w-6 h-6" }: IconProps) {
-  return (
-    <svg {...base(className)}>
-      <path d="M3 8a9 4 0 0 0 18 0a9 4 0 0 0-18 0Z" />
-      <path d="M3 8v8a9 4 0 0 0 18 0V8" />
-      <path d="M3 12a9 4 0 0 0 18 0" />
-    </svg>
-  );
-}
-
 export function DrainIcon({ className = "w-6 h-6" }: IconProps) {
   return (
     <svg {...base(className)}>
@@ -166,6 +156,34 @@ export function LeafIcon({ className = "w-6 h-6" }: IconProps) {
     <svg {...base(className)}>
       <path d="M5 19c0-8 6-13 14-13 0 8-5 14-13 14a6 6 0 0 1-1-1Z" />
       <path d="M9 15c2-3 5-5 8-6" />
+    </svg>
+  );
+}
+
+export function FireIcon({ className = "w-6 h-6" }: IconProps) {
+  return (
+    <svg {...base(className)}>
+      <path d="M12 2c1 3 4 4.5 4 8a4 4 0 0 1-8 0c0-1.2.4-2 1-2.8C8 9 8 12 6 13a6 6 0 1 0 12 0c0-4-3-6-6-11Z" />
+    </svg>
+  );
+}
+
+export function TruckIcon({ className = "w-6 h-6" }: IconProps) {
+  return (
+    <svg {...base(className)}>
+      <path d="M2 6h11v9H2zM13 9h4l3 3v3h-7z" />
+      <circle cx="7" cy="18" r="1.8" />
+      <circle cx="17" cy="18" r="1.8" />
+    </svg>
+  );
+}
+
+export function HandshakeIcon({ className = "w-6 h-6" }: IconProps) {
+  return (
+    <svg {...base(className)}>
+      <path d="m11 11 2 2a1.5 1.5 0 0 0 2.1-2.1L11.5 7.4a3 3 0 0 0-3.3-.6L5 8" />
+      <path d="m13 13 1.5 1.5a1.4 1.4 0 0 0 2-2L15 11M2 8l3 7M22 8l-3 7" />
+      <path d="M14.5 8.5 17 6l2 1.5" />
     </svg>
   );
 }

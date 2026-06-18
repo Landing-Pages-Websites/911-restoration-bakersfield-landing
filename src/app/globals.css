@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  /* Conejo Bros — bright orange brand */
-  --color-orange: #ED6A1A;
-  --color-orange-dark: #C9530E;
-  --color-orange-light: #FF8534;
-  --color-navy: #14233B;
+  /* 911 Restoration of Bakersfield — deep red + navy brand */
+  --color-orange: #C9272D;
+  --color-orange-dark: #A81F24;
+  --color-orange-light: #E14B50;
+  --color-navy: #15263D;
   --color-navy-light: #1F3454;
   --color-red: #ED233B;
   --color-sky: #2C8FD6;
   --color-bg-light: #F6F7F9;
-  --color-bg-warm: #FFF6EF;
+  --color-bg-warm: #FCEFEF;
   --color-text-primary: #1A1F26;
   --color-text-muted: #5A6472;
   --color-text-light: #8A94A3;
@@ -55,7 +55,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(237, 106, 26, 0.18);
+  box-shadow: 0 0 0 3px rgba(201, 39, 45, 0.18);
   border-color: var(--color-orange);
 }
 
@@ -124,10 +124,10 @@ textarea:focus {
 /* CTA pulse */
 @keyframes ctaGlow {
   0%, 100% {
-    box-shadow: 0 8px 24px -6px rgba(237, 106, 26, 0.5);
+    box-shadow: 0 8px 24px -6px rgba(201, 39, 45, 0.5);
   }
   50% {
-    box-shadow: 0 12px 34px -4px rgba(237, 106, 26, 0.75);
+    box-shadow: 0 12px 34px -4px rgba(201, 39, 45, 0.75);
   }
 }
 .pulse-glow {

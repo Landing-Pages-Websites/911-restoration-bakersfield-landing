@@ -3,9 +3,9 @@
 import { useEffect, useCallback, useRef } from "react";
 
 const CONFIG = {
-  CUSTOMER_ID: "dc6b9691-c43f-4b7e-83df-0115e9126d90",
-  SITE_ID: "c4c1e2bb-8d8c-4255-a90a-27adefc7fc8f",
-  SOURCE_PROVIDER: "customer-landing-conejo-bros-plumbing",
+  CUSTOMER_ID: "882d48c6-3a38-4aa8-83ec-07ce6239414c",
+  SITE_ID: "fa3156d9-b3e9-4b18-b1a2-fb8202bbbbfd",
+  SOURCE_PROVIDER: "customer-landing-911-restoration-bakersfield",
   ENDPOINT: "https://analytics.gomega.ai/submission/submit",
 };
 
