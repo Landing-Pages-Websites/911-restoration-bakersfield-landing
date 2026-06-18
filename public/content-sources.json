@@ -1,0 +1,95 @@
+{
+  "customer": "Conejo Bros Plumbing",
+  "primary_source": "https://conejobrosplumbing.com",
+  "extracted_at": "2026-06-01",
+  "testimonials": [
+    {
+      "name": "Evangeline Tan",
+      "text": "Thanks to Tiago and the Conejo Bros Plumbing team, our sewer drain is now in perfect working order! They were prompt, knowledgeable, and courteous throughout the entire process. Exceptional service!",
+      "source": "https://conejobrosplumbing.com/reviews/ (Google review, JSON-LD Review schema)",
+      "verified_at": "2026-06-01",
+      "extraction_method": "JSON-LD reviewBody + author.name parse from /reviews page"
+    },
+    {
+      "name": "Mikie Wu",
+      "text": "I'm extremely grateful to Conejo Bros Plumbing for their exceptional service. Tiago went the extra mile to clear our clogged sewer drain. Friendly, dependable, and highly skilled. A solid 5-star rating!",
+      "source": "https://conejobrosplumbing.com/reviews/ (Google review, JSON-LD Review schema)",
+      "verified_at": "2026-06-01",
+      "extraction_method": "JSON-LD reviewBody + author.name parse"
+    },
+    {
+      "name": "Robert Alkana",
+      "text": "Came home to a backed up kitchen and called Conejo Bros Plumbing. Not only did they clean my drain under my sink but they left my stuff underneath nice and organized. Highly recommend them to anyone who needs plumbing help!",
+      "source": "https://conejobrosplumbing.com/reviews/ (Google review, JSON-LD Review schema)",
+      "verified_at": "2026-06-01",
+      "extraction_method": "JSON-LD reviewBody + author.name parse"
+    },
+    {
+      "name": "Joyce Aldoroty",
+      "text": "Kyle did a great job replacing emergency valves, a garbage disposal, and a kitchen faucet. He was professional and communicative — he was awesome! When we still had other problems, Kyle rearranged his schedule and came back.",
+      "source": "https://conejobrosplumbing.com/reviews/ (Google review, JSON-LD Review schema)",
+      "verified_at": "2026-06-01",
+      "extraction_method": "JSON-LD reviewBody + author.name parse (lightly trimmed for length)"
+    },
+    {
+      "name": "Ambrose Daye",
+      "text": "Conejo Bros Plumbing is simply incredible! They came through for us when our sewer drain got completely clogged. Tiago handled the job with professionalism and efficiency, getting it done in no time. Highly recommended!",
+      "source": "https://conejobrosplumbing.com/reviews/ (Google review, JSON-LD Review schema)",
+      "verified_at": "2026-06-01",
+      "extraction_method": "JSON-LD reviewBody + author.name parse"
+    },
+    {
+      "name": "Mark Smith",
+      "text": "Impressed with the expertise of Tiago's plumbing crew. They tackled a complex issue at our business promptly and with precision. Outstanding service!",
+      "source": "https://conejobrosplumbing.com/reviews/ (Google review, JSON-LD Review schema)",
+      "verified_at": "2026-06-01",
+      "extraction_method": "JSON-LD reviewBody + author.name parse"
+    }
+  ],
+  "stats": [
+    {
+      "claim": "5.0 Google rating",
+      "source": "JSON-LD aggregateRating / individual Review ratingValue all = 5 on https://conejobrosplumbing.com/reviews/",
+      "verified_at": "2026-06-01",
+      "method": "parsed ratingValue from Review schema"
+    },
+    {
+      "claim": "Decades of experience / Open 24/7",
+      "source": "Site header banner: 'Decades of experience | Satisfaction guaranteed' and 'Open 24/7' on conejobrosplumbing.com",
+      "verified_at": "2026-06-01",
+      "method": "site header text"
+    },
+    {
+      "claim": "In-house septic design, geological testing, and installation (one of very few CA companies)",
+      "source": "Task input content_requests + corroborated by site septic service pages",
+      "verified_at": "2026-06-01",
+      "method": "task spec + site service nav"
+    }
+  ],
+  "licenses": [
+    "Licensed & insured CA plumbers (site states 'Licensed Plumbers'; specific CSLB number not displayed on site footer)"
+  ],
+  "partnerships": [
+    "GreenSky® financing (0% interest options) — from task content_requests and site /financing page"
+  ],
+  "service_areas": [
+    "Thousand Oaks", "Westlake Village", "Newbury Park", "Moorpark", "Simi Valley",
+    "Agoura Hills", "Calabasas", "Camarillo", "Oxnard", "Ventura", "Santa Paula", "Fillmore"
+  ],
+  "images": [
+    {"file": "hero-plumber.jpg", "source": "wp-content/uploads/2023/12/Drain-Cleaning-Service-Thumbnail.jpg"},
+    {"file": "septic-tank.jpg", "source": "wp-content/uploads/2023/12/Conejo-Bros-Tank-Pump-.jpg"},
+    {"file": "yard-drains.jpg", "source": "wp-content/uploads/2023/12/Yard-Drains-Image.jpg"},
+    {"file": "drain-cleaning.jpg", "source": "wp-content/uploads/2023/12/Hydro-Jetting-Image.jpg"},
+    {"file": "trenchless.jpg", "source": "wp-content/uploads/2024/01/Before-and-After-Trenchless-Pipe-With-Titles-720x480-1.jpg"},
+    {"file": "camera-inspection.jpg", "source": "wp-content/uploads/2024/01/Conejo-Bros-Plumbing-Camera-Inspection-720x480-2.jpg"},
+    {"file": "emergency-plumbing.jpg", "source": "wp-content/uploads/2023/12/Descaling-Image.jpg"},
+    {"file": "about-team.jpg", "source": "wp-content/uploads/2023/09/services-list-pic.jpg"},
+    {"file": "logo.png", "source": "wp-content/uploads/2024/01/Conejo-Bros-Plumbing-Logo-420px-Width-300dpi.png"},
+    {"file": "src/app/icon.png", "source": "wp-content/uploads/2023/12/cropped-favicon.png"}
+  ],
+  "intentional_removals": [
+    "No pricing shown on page per task spec (content_requests: 'No pricing on page').",
+    "Video review thumbnails omitted (LP scope keeps to text testimonials + still imagery)."
+  ]
+}

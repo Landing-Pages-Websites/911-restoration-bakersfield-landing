@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  /* Conejo Bros — bright orange brand */
+  --color-orange: #ED6A1A;
+  --color-orange-dark: #C9530E;
+  --color-orange-light: #FF8534;
+  --color-navy: #14233B;
+  --color-navy-light: #1F3454;
+  --color-red: #ED233B;
+  --color-sky: #2C8FD6;
+  --color-bg-light: #F6F7F9;
+  --color-bg-warm: #FFF6EF;
+  --color-text-primary: #1A1F26;
+  --color-text-muted: #5A6472;
+  --color-text-light: #8A94A3;
+  --color-border: #E4E8EE;
+  --color-success: #16A34A;
+  --color-white: #FFFFFF;
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-display-bold: var(--font-display-bold), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a[href^="tel:"] {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-orange);
+  border-radius: 4px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(237, 106, 26, 0.18);
+  border-color: var(--color-orange);
+}
+
+/* Form field text + placeholder must stay dark/readable even when the form
+   sits inside a dark / text-white hero section (otherwise typed text renders
+   white-on-white and the fields look empty). */
+.lp-field {
+  color: var(--color-text-primary) !important;
+}
+.lp-field::placeholder {
+  color: var(--color-text-muted) !important;
+  opacity: 1;
+}
+
+/* Inline per-field validation error (dedicated class — not Tailwind-only,
+   so purge can never drop it). Rendered in a <p role="alert" aria-live>. */
+.lp-input-error {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-red);
+}
+.lp-input-error::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex: none;
+  background-color: var(--color-red);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><line x1='12' y1='8' x2='12' y2='12'/><line x1='12' y1='16' x2='12.01' y2='16'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><line x1='12' y1='8' x2='12' y2='12'/><line x1='12' y1='16' x2='12.01' y2='16'/></svg>") center / contain no-repeat;
+}
+
+/* Invalid input ring */
+.lp-input-invalid {
+  border-color: var(--color-red) !important;
+  box-shadow: 0 0 0 1px rgba(237, 35, 59, 0.3);
+}
+.lp-input-invalid:focus {
+  outline-color: var(--color-red);
+}
+
+/* Scroll-reveal animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal {
+  opacity: 0;
+}
+.reveal.in-view {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* CTA pulse */
+@keyframes ctaGlow {
+  0%, 100% {
+    box-shadow: 0 8px 24px -6px rgba(237, 106, 26, 0.5);
+  }
+  50% {
+    box-shadow: 0 12px 34px -4px rgba(237, 106, 26, 0.75);
+  }
+}
+.pulse-glow {
+  animation: ctaGlow 2.6s ease-in-out infinite;
+}
+
+/* Hero diagonal accent */
+.hero-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%);
+}
+
+.bg-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.08) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+}

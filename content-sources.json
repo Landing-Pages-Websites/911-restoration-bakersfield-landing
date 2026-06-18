@@ -1,0 +1,79 @@
+{
+  "customer": "911 Restoration of Bakersfield",
+  "primary_source": "https://911restorationbakersfield.com",
+  "extracted_at": "2026-06-18",
+  "stats": [
+    {
+      "claim": "4.9/5 rating from 300 reviews",
+      "source_url": "https://www.verifiedremediation.com/provider/911-restoration-of-bakersfield",
+      "verified": true,
+      "verified_at": "2026-06-18",
+      "note": "Aggregated public review rating, Verified Remediation provider profile"
+    },
+    {
+      "claim": "45-minute emergency response time",
+      "source_url": "https://911restorationbakersfield.com",
+      "verified": true,
+      "verified_at": "2026-06-18",
+      "note": "Stated on live homepage hero ('45 min. RESPONSE')"
+    },
+    {
+      "claim": "24/7/365 availability",
+      "source_url": "https://911restorationbakersfield.com",
+      "verified": true,
+      "verified_at": "2026-06-18"
+    },
+    {
+      "claim": "Family-owned, serving Kern County since 2018",
+      "source_url": "https://911restorationbakersfield.com",
+      "verified": true,
+      "verified_at": "2026-06-18"
+    },
+    {
+      "claim": "27 years of combined experience",
+      "source_url": "https://911restorationbakersfield.com",
+      "verified": true,
+      "verified_at": "2026-06-18"
+    },
+    {
+      "claim": "IICRC-certified technicians",
+      "source_url": "https://911restorationbakersfield.com",
+      "verified": true,
+      "verified_at": "2026-06-18"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Rocio Luna",
+      "text": "911 Restoration is an absolute blessing. Our entire home flooded, and it was bad. They dried out and reconstructed our entire home and did a gorgeous, quality job. They showed up when they said they would. Communication was the best, which brings comfort to a stressful situation. 10/10!",
+      "source": "https://www.911restorationbakersfield.com/reviews/",
+      "verified": true,
+      "verified_at": "2026-06-18",
+      "extraction_method": "Reviews page text, dated 10th of August 2023"
+    },
+    {
+      "name": "Kristal Martinez",
+      "text": "The 911 Restoration team did a great job with demo, construction work, and cleaning! All with reasonable and affordable pricing. From speaking to the insurance company to scheduling all the work, they kept me in the loop every step of the way. I will definitely be giving them a call again in the future.",
+      "source": "https://www.911restorationbakersfield.com/reviews/",
+      "verified": true,
+      "verified_at": "2026-06-18",
+      "extraction_method": "Reviews page text, dated 9th of August 2023"
+    },
+    {
+      "name": "Maylee Salas",
+      "text": "911 Restoration was able to help with a leak I had in my bedroom ceiling. They carefully and kindly moved and covered my things. They were patient enough to answer all my questions and were very professional. All in all it was a positive experience.",
+      "source": "https://www.911restorationbakersfield.com/reviews/",
+      "verified": true,
+      "verified_at": "2026-06-18",
+      "extraction_method": "Reviews page text, dated 23rd of September 2023"
+    }
+  ],
+  "business_facts": {
+    "address": "4838 Burr St. Unit B, Bakersfield, CA 93308",
+    "display_phone_live_site": "(661) 220-7584",
+    "ctm_tracked_phone_for_lp": "(661) 416-8390",
+    "service_areas": ["Bakersfield", "Kern County", "Tulare County", "Arvin", "Delano", "Lamont", "Edison", "Tehachapi", "McFarland", "Pine Mountain Club", "Oildale", "Wasco", "Lost Hills", "Shafter", "Mettler", "Wheeler Ridge", "Buttonwillow"],
+    "services": ["Water Damage Restoration", "Mold Removal", "Fire & Smoke Damage Restoration", "Sewage Cleanup", "Commercial Restoration", "Disaster Restoration / Reconstruction"],
+    "differentiators": ["45-minute response", "24/7/365", "Bilingual (English/Spanish) / Hablamos Español", "IICRC-certified", "Free visual inspection", "Direct insurance claim support", "Family-owned since 2018"]
+  }
+}
