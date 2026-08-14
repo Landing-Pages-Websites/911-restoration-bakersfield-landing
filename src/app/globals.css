@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* 911 Restoration of Bakersfield — deep red + navy brand */
+  /* 911 Restoration of Bakersfield: deep red + navy brand */
   --color-orange: #C9272D;
   --color-orange-dark: #A81F24;
   --color-orange-light: #E14B50;
@@ -70,7 +70,7 @@ textarea:focus {
   opacity: 1;
 }
 
-/* Inline per-field validation error (dedicated class — not Tailwind-only,
+/* Inline per-field validation error (dedicated class, not Tailwind-only,
    so purge can never drop it). Rendered in a <p role="alert" aria-live>. */
 .lp-input-error {
   display: flex;
@@ -132,6 +132,17 @@ textarea:focus {
 }
 .pulse-glow {
   animation: ctaGlow 2.6s ease-in-out infinite;
+}
+
+/* Reserve space for the fixed mobile CTA bar so it never covers page content
+   (safe-area aware). Cleared at md+ where the bar is hidden. */
+.lp-sticky-safe {
+  padding-bottom: calc(88px + env(safe-area-inset-bottom));
+}
+@media (min-width: 768px) {
+  .lp-sticky-safe {
+    padding-bottom: 0;
+  }
 }
 
 /* Hero diagonal accent */

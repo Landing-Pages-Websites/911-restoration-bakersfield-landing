@@ -72,7 +72,6 @@ function isValidEmail(value: string): boolean {
 
 type FieldName =
   | "firstName"
-  | "lastName"
   | "email"
   | "phone"
   | "zip"
@@ -107,7 +106,6 @@ function LeadForm({ id = "quote-form" }: { id?: string }) {
   const formRef = useRef<HTMLFormElement>(null);
   const [form, setForm] = useState({
     firstName: "",
-    lastName: "",
     email: "",
     phone: "",
     zip: "",
@@ -121,15 +119,13 @@ function LeadForm({ id = "quote-form" }: { id?: string }) {
 
   const timeframes = ["ASAP / Emergency", "Within a few days", "Just researching"];
 
-  // Per-field validators — return an error string, or "" when valid.
+  // Per-field validators. Return an error string, or "" when valid.
   function validateField(name: FieldName, value: string): string {
     switch (name) {
       case "firstName":
         return value.trim() ? "" : "Please enter your first name.";
-      case "lastName":
-        return value.trim() ? "" : "Please enter your last name.";
       case "email":
-        if (!value.trim()) return "Please enter your email address.";
+        if (!value.trim()) return "";
         return isValidEmail(value)
           ? ""
           : "Please enter a valid email address.";
@@ -197,7 +193,6 @@ function LeadForm({ id = "quote-form" }: { id?: string }) {
     // Validate every field; show ALL errors at once + focus first invalid.
     const fields: FieldName[] = [
       "firstName",
-      "lastName",
       "email",
       "phone",
       "zip",
@@ -230,7 +225,6 @@ function LeadForm({ id = "quote-form" }: { id?: string }) {
     try {
       await submitLead({
         firstName: form.firstName.trim(),
-        lastName: form.lastName.trim(),
         email: form.email.trim(),
         phone: form.phone.replace(/\D/g, ""),
         zip: form.zip.replace(/\D/g, ""),
@@ -245,7 +239,6 @@ function LeadForm({ id = "quote-form" }: { id?: string }) {
           window.MegaTag.trackEvent("form_submit", {
             element: `form-${id}`,
             firstName: form.firstName.trim(),
-            lastName: form.lastName.trim(),
             email: form.email.trim(),
             phone: form.phone.replace(/\D/g, ""),
             zip: form.zip.replace(/\D/g, ""),
@@ -331,60 +324,36 @@ function LeadForm({ id = "quote-form" }: { id?: string }) {
       </div>
 
       <div className="space-y-3">
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label htmlFor="firstName" className={labelCls}>
-              First Name <span className="text-red">*</span>
-            </label>
-            <input
-              id="firstName"
-              name="firstName"
-              type="text"
-              required
-              placeholder="First Name"
-              value={form.firstName}
-              onChange={(e) => setFieldValue("firstName", e.target.value)}
-              onBlur={() => handleBlur("firstName")}
-              aria-invalid={errors.firstName ? "true" : undefined}
-              aria-describedby={errors.firstName ? "firstName-error" : undefined}
-              className={`lp-field w-full px-4 py-3 border rounded-lg text-sm bg-bg-light focus:bg-white transition ${
-                errors.firstName ? "lp-input-invalid" : "border-border"
-              }`}
-            />
-            <FieldError name="firstName" />
-          </div>
-          <div>
-            <label htmlFor="lastName" className={labelCls}>
-              Last Name <span className="text-red">*</span>
-            </label>
-            <input
-              id="lastName"
-              name="lastName"
-              type="text"
-              required
-              placeholder="Last Name"
-              value={form.lastName}
-              onChange={(e) => setFieldValue("lastName", e.target.value)}
-              onBlur={() => handleBlur("lastName")}
-              aria-invalid={errors.lastName ? "true" : undefined}
-              aria-describedby={errors.lastName ? "lastName-error" : undefined}
-              className={`lp-field w-full px-4 py-3 border rounded-lg text-sm bg-bg-light focus:bg-white transition ${
-                errors.lastName ? "lp-input-invalid" : "border-border"
-              }`}
-            />
-            <FieldError name="lastName" />
-          </div>
+        <div>
+          <label htmlFor="firstName" className={labelCls}>
+            First Name <span className="text-red">*</span>
+          </label>
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            required
+            placeholder="First Name"
+            value={form.firstName}
+            onChange={(e) => setFieldValue("firstName", e.target.value)}
+            onBlur={() => handleBlur("firstName")}
+            aria-invalid={errors.firstName ? "true" : undefined}
+            aria-describedby={errors.firstName ? "firstName-error" : undefined}
+            className={`lp-field w-full px-4 py-3 border rounded-lg text-sm bg-bg-light focus:bg-white transition ${
+              errors.firstName ? "lp-input-invalid" : "border-border"
+            }`}
+          />
+          <FieldError name="firstName" />
         </div>
 
         <div>
           <label htmlFor="email" className={labelCls}>
-            Email Address <span className="text-red">*</span>
+            Email Address <span className="text-text-muted font-normal">(optional)</span>
           </label>
           <input
             id="email"
             name="email"
             type="email"
-            required
             pattern={EMAIL_PATTERN}
             title="Enter a valid email address, e.g. name@example.com"
             placeholder="Email Address"
@@ -579,8 +548,8 @@ const SERVICE_AREAS = [
 /* ─── Page ───────────────────────────────────────────────────── */
 export default function Page() {
   return (
-    <main className="overflow-x-hidden">
-      {/* Sticky header — logo + CTA only (no nav links) */}
+    <main className="overflow-x-hidden lp-sticky-safe">
+      {/* Sticky header: logo + CTA only (no nav links) */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <Image src="/images/logo.png" alt="911 Restoration of Bakersfield" width={150} height={59} className="h-10 w-auto" priority />
@@ -620,7 +589,7 @@ export default function Page() {
             </h1>
             <p className="mt-5 text-lg text-white/80 max-w-xl">
               IICRC-certified, family-owned since 2018, and bilingual (¡Hablamos Español!). We provide a free visual
-              inspection and bill your insurance directly — so the cleanup starts fast and the stress stays low.
+              inspection and bill your insurance directly, so the cleanup starts fast and the stress stays low.
             </p>
             <ul className="mt-6 grid sm:grid-cols-2 gap-3 max-w-xl">
               {[
@@ -683,10 +652,10 @@ export default function Page() {
           <Reveal className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-orange font-bold uppercase tracking-wide text-sm">Complete Restoration</span>
             <h2 className="font-[family-name:var(--font-display-bold)] text-3xl md:text-4xl font-extrabold text-navy mt-2">
-              One Team for Every Disaster — From Emergency to Rebuild
+              One Team for Every Disaster: From Emergency to Rebuild
             </h2>
             <p className="text-text-muted mt-4">
-              Water, fire, smoke, mold, or sewage — our IICRC-certified crews handle the full recovery, from the first
+              Water, fire, smoke, mold, or sewage: our IICRC-certified crews handle the full recovery, from the first
               extraction to the final reconstruction. We work directly with your insurance every step of the way.
             </p>
           </Reveal>
@@ -697,42 +666,42 @@ export default function Page() {
                 icon: <DropletIcon className="w-7 h-7" />,
                 title: "Water Damage Restoration",
                 body:
-                  "Burst pipes, appliance leaks, flooding, and sewage backups demand a fast response. We provide 24/7 emergency water extraction, structural drying, and industrial dehumidification — removing every trace of moisture before it warps floors, ruins drywall, or feeds mold. We document everything for your insurance claim.",
+                  "Burst pipes, appliance leaks, flooding, and sewage backups demand a fast response. We provide 24/7 emergency water extraction, structural drying, and industrial dehumidification, removing every trace of moisture before it warps floors, ruins drywall, or feeds mold. We document everything for your insurance claim.",
                 href: "#water-damage",
               },
               {
                 icon: <FireIcon className="w-7 h-7" />,
                 title: "Fire & Smoke Damage Restoration",
                 body:
-                  "After a fire, every hour counts. Our team handles emergency board-up, soot and smoke remediation, odor removal, and contents cleaning — then rebuilds what was lost. From a single scorched room to a full structural rebuild, we restore your property and your peace of mind.",
+                  "After a fire, every hour counts. Our team handles emergency board-up, soot and smoke remediation, odor removal, and contents cleaning, then rebuilds what was lost. From a single scorched room to a full structural rebuild, we restore your property and your peace of mind.",
                 href: "#fire-damage",
               },
               {
                 icon: <ShieldIcon className="w-7 h-7" />,
                 title: "Mold Removal & Remediation",
                 body:
-                  "Mold threatens both your home and your health. We perform certified mold inspection, full containment, HEPA filtration, and antimicrobial treatment to eliminate the problem at its source. The result is a clean, healthy environment with the air quality your family deserves.",
-                href: "#fire-damage",
+                  "Mold threatens both your home and your health. We contain the affected area, run HEPA filtration, and apply antimicrobial treatment to eliminate the problem at its source. The result is a clean, healthy environment with the air quality your family deserves.",
+                href: "#mold-remediation",
               },
               {
                 icon: <DrainIcon className="w-7 h-7" />,
                 title: "Sewage Cleanup",
                 body:
-                  "Sewage backups are a serious biohazard that should never be handled alone. Our technicians safely extract contaminated water, then sanitize and decontaminate every affected surface using professional-grade equipment — restoring a safe, sanitary space for your family or staff.",
+                  "Sewage backups are a serious biohazard that should never be handled alone. Our technicians safely extract contaminated water, then sanitize and decontaminate every affected surface using professional-grade equipment, restoring a safe, sanitary space for your family or staff.",
                 href: "#water-damage",
               },
               {
                 icon: <TruckIcon className="w-7 h-7" />,
                 title: "Commercial Restoration",
                 body:
-                  "Businesses, property managers, and large complexes can't afford extended downtime. We mobilize quickly with the crews and equipment to restore commercial properties of any size — minimizing disruption and getting you back to business as fast as safely possible.",
+                  "Businesses, property managers, and large complexes can't afford extended downtime. We mobilize quickly with the crews and equipment to restore commercial properties of any size, minimizing disruption and getting you back to business as fast as safely possible.",
                 href: "#water-damage",
               },
               {
                 icon: <WrenchIcon className="w-7 h-7" />,
                 title: "Disaster Restoration & Reconstruction",
                 body:
-                  "We're a true full-service partner — handling everything from emergency mitigation through complete reconstruction. One accountable team manages the entire project, so you never have to coordinate multiple contractors or wonder who's responsible for the final result.",
+                  "We're a true full-service partner, handling everything from emergency mitigation through complete reconstruction. One accountable team manages the entire project, so you never have to coordinate multiple contractors or wonder who's responsible for the final result.",
                 href: "#fire-damage",
               },
             ].map((s, i) => (
@@ -767,7 +736,7 @@ export default function Page() {
             </h2>
             <p className="text-text-muted mt-4 leading-relaxed">
               Water spreads fast and damage compounds by the hour. The moment you call, our IICRC-certified crew is on
-              the way to stop the source, extract standing water, and dry your property to the studs — preventing the
+              the way to stop the source, extract standing water, and dry your property to the studs, preventing the
               warping, rot, and mold that turn a small leak into a major rebuild.
             </p>
             <ul className="mt-6 space-y-3">
@@ -796,59 +765,104 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ── Fire & mold spotlight ── */}
+      {/* ── Fire & smoke spotlight ── */}
       <section id="fire-damage" className="bg-navy text-white py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
           <Reveal className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-orange-light font-bold uppercase tracking-wide text-sm">Fire, Smoke &amp; Mold</span>
+            <span className="text-orange-light font-bold uppercase tracking-wide text-sm">Fire &amp; Smoke</span>
             <h2 className="font-[family-name:var(--font-display-bold)] text-3xl md:text-4xl font-extrabold mt-2">
-              From Soot &amp; Smoke to Spores — We Restore It All
+              From Soot &amp; Smoke Back to Pre-Loss Condition
             </h2>
             <p className="text-white/80 mt-4">
-              Fire and mold damage are overwhelming on their own. Our certified team handles both — safely, thoroughly,
-              and with the documentation your insurer needs.
+              A house fire leaves behind more than char. Our certified team handles the full recovery, safely and
+              thoroughly, with the documentation your insurer needs.
             </p>
           </Reveal>
-          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <Reveal>
-              <div className="h-full bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                <Image src="/images/fire-damage.jpg" alt="Fire and smoke damage restoration" width={900} height={500} className="w-full h-52 object-cover" />
-                <div className="p-7">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-11 h-11 rounded-xl bg-orange/20 text-orange-light flex items-center justify-center">
-                      <FireIcon className="w-6 h-6" />
-                    </div>
-                    <h3 className="font-bold text-xl">Fire &amp; Smoke Damage</h3>
-                  </div>
-                  <p className="text-white/75 text-sm leading-relaxed">
-                    We respond immediately with emergency board-up to secure your property, then remove soot, neutralize
-                    smoke odor, and clean salvageable contents. When mitigation is complete, our crews rebuild the
-                    affected areas — returning your home or business to its pre-loss condition.
-                  </p>
-                </div>
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                <Image src="/images/fire-damage.jpg" alt="Fire and smoke damage restoration in a Bakersfield home" width={1200} height={800} className="w-full h-full object-cover" />
               </div>
             </Reveal>
             <Reveal delay={80}>
-              <div className="h-full bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-                <Image src="/images/mold-removal.jpg" alt="Mold removal and remediation" width={900} height={500} className="w-full h-52 object-cover" />
-                <div className="p-7">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-11 h-11 rounded-xl bg-orange/20 text-orange-light flex items-center justify-center">
-                      <ShieldIcon className="w-6 h-6" />
-                    </div>
-                    <h3 className="font-bold text-xl">Mold Removal &amp; Remediation</h3>
-                  </div>
-                  <p className="text-white/75 text-sm leading-relaxed">
-                    Mold thrives on hidden moisture and spreads fast. We start with a certified inspection, then contain
-                    the area, run HEPA filtration, and apply antimicrobial treatment to eliminate mold at the source —
-                    restoring clean, healthy air so your family or staff can breathe easy again.
-                  </p>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-orange/20 text-orange-light flex items-center justify-center shrink-0">
+                  <FireIcon className="w-6 h-6" />
                 </div>
+                <h3 className="font-bold text-2xl">Fire &amp; Smoke Damage Restoration</h3>
+              </div>
+              <p className="text-white/75 leading-relaxed">
+                We respond immediately with emergency board-up to secure your property, then remove soot, neutralize
+                smoke odor, and clean salvageable contents. When mitigation is complete, our crews rebuild the affected
+                areas, returning your home or business to its pre-loss condition.
+              </p>
+              <ul className="mt-6 space-y-3">
+                {[
+                  "Emergency board-up & structural stabilization",
+                  "Soot removal & smoke odor neutralization",
+                  "Contents cleaning & pack-out",
+                  "Full reconstruction of damaged areas",
+                ].map((b) => (
+                  <li key={b} className="flex items-start gap-3 text-white/90 text-sm">
+                    <CheckIcon className="w-5 h-5 text-orange-light shrink-0 mt-0.5" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8">
+                <DualCta center={false} label="Start My Fire Cleanup" />
               </div>
             </Reveal>
           </div>
-          <Reveal className="mt-10">
-            <DualCta />
+        </div>
+      </section>
+
+      {/* ── Mold remediation spotlight ── */}
+      <section id="mold-remediation" className="bg-bg-light py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+          <Reveal className="order-2 lg:order-1">
+            <span className="text-orange font-bold uppercase tracking-wide text-sm">Mold Remediation</span>
+            <h2 className="font-[family-name:var(--font-display-bold)] text-3xl md:text-4xl font-extrabold text-navy mt-2">
+              Mold Remediation &amp; Removal in Bakersfield
+            </h2>
+            <p className="text-text-muted mt-4 leading-relaxed">
+              Mold thrives on hidden moisture and spreads fast. We contain the affected area, run HEPA filtration, and
+              apply antimicrobial treatment to eliminate mold at the source, restoring clean, healthy air so your
+              family or staff can breathe easy again.
+            </p>
+            <ul className="mt-6 space-y-3">
+              {[
+                "Mold containment",
+                "HEPA filtration",
+                "Antimicrobial treatment",
+                "Residential and commercial remediation",
+              ].map((b) => (
+                <li key={b} className="flex items-start gap-3 text-navy text-sm">
+                  <CheckIcon className="w-5 h-5 text-orange shrink-0 mt-0.5" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+              <a
+                href="#quote"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-orange hover:bg-orange-dark text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl"
+              >
+                Get Mold Removal Help
+              </a>
+              <a
+                href={PHONE_HREF}
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white border-2 border-navy/15 hover:border-orange text-navy font-bold rounded-xl transition-all"
+              >
+                <PhoneIcon className="w-5 h-5 text-orange" />
+                {PHONE}
+              </a>
+            </div>
+          </Reveal>
+          <Reveal className="order-1 lg:order-2" delay={80}>
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-border">
+              <Image src="/images/mold-removal.jpg" alt="Mold removal and remediation in a Bakersfield property" width={1200} height={800} className="w-full h-full object-cover" />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -868,17 +882,17 @@ export default function Page() {
             </h2>
             <p className="text-text-muted mt-4 leading-relaxed">
               911 Restoration of Bakersfield is a family-owned company serving Kern County since 2018. Our technicians
-              bring 27 years of combined experience and full IICRC certification to every job — backed by a 45-minute
+              bring 27 years of combined experience and full IICRC certification to every job, backed by a 45-minute
               emergency response and true 24/7 availability.
             </p>
             <p className="text-text-muted mt-4 leading-relaxed">
               We know disaster is stressful, so we make the recovery simple. Every job starts with a free visual
-              inspection, and our bilingual team works directly with your insurance company — keeping you informed from
+              inspection, and our bilingual team works directly with your insurance company, keeping you informed from
               the first call to the final walkthrough.
             </p>
             <p className="text-text-muted mt-4 leading-relaxed">
               That&apos;s the &ldquo;Fresh Start&rdquo; promise: fast, honest, certified restoration that gets your home
-              or business — and your life — back to normal.
+              or business, and your life, back to normal.
             </p>
             <div className="mt-7 grid grid-cols-2 gap-5">
               {[
@@ -961,7 +975,7 @@ export default function Page() {
             </h2>
             <p className="text-text-muted mt-4 max-w-2xl mx-auto">
               Local, certified, and ready to respond fast. If you&apos;re in Bakersfield or the surrounding Kern and
-              Tulare County communities, 911 Restoration has you covered — 24/7.
+              Tulare County communities, 911 Restoration has you covered, 24/7.
             </p>
           </Reveal>
           <Reveal delay={60} className="mt-8 flex flex-wrap justify-center gap-3">
@@ -991,23 +1005,23 @@ export default function Page() {
             {[
               {
                 q: "How fast can you get to my property?",
-                a: "We aim to be on-site within 45 minutes of your call, and we're available 24 hours a day, 365 days a year. When water, fire, or sewage is spreading, every minute matters — so a real technician answers and dispatches a crew right away.",
+                a: "We aim to be on-site within 45 minutes of your call, and we're available 24 hours a day, 365 days a year. When water, fire, or sewage is spreading, every minute matters, so a real technician answers and dispatches a crew right away.",
               },
               {
                 q: "Do you work with my insurance company?",
-                a: "Yes. We provide direct insurance claim support and bill most carriers directly. Our team documents all damage thoroughly, communicates with your adjuster, and handles the paperwork — so you can focus on your family instead of fighting your claim.",
+                a: "Yes. We provide direct insurance claim support and bill most carriers directly. Our team documents all damage thoroughly, communicates with your adjuster, and handles the paperwork, so you can focus on your family instead of fighting your claim.",
               },
               {
                 q: "¿Hablan español? Do you have bilingual staff?",
-                a: "¡Sí! Our team is fully bilingual in English and Spanish. From your first call through the final walkthrough — including all insurance communication — we can assist you in the language you're most comfortable with.",
+                a: "¡Sí! Our team is fully bilingual in English and Spanish. From your first call through the final walkthrough, including all insurance communication, we can assist you in the language you're most comfortable with.",
               },
               {
                 q: "Is the inspection really free?",
-                a: "Absolutely. We provide a free visual inspection with no obligation. A certified technician assesses the damage, explains your options, and gives you a clear plan — before any work begins.",
+                a: "Absolutely. We provide a free visual inspection with no obligation. A certified technician assesses the damage, explains your options, and gives you a clear plan before any work begins.",
               },
               {
                 q: "What should I do first after water damage?",
-                a: "If it's safe, stop the water source and shut off electricity to affected areas, then move valuables to a dry spot. Avoid walking through standing water near outlets. Then call us at (661) 416-8390 — the faster we extract and dry, the less damage spreads and the lower the cost of restoration.",
+                a: "If it's safe, stop the water source and shut off electricity to affected areas, then move valuables to a dry spot. Avoid walking through standing water near outlets. Then call us at (661) 416-8390. The faster we extract and dry, the less damage spreads and the lower the cost of restoration.",
               },
             ].map((f) => (
               <Reveal key={f.q}>
@@ -1027,10 +1041,10 @@ export default function Page() {
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <Reveal>
             <h2 className="font-[family-name:var(--font-display-bold)] text-3xl md:text-5xl font-extrabold">
-              Disaster Won&apos;t Wait — Neither Do We.
+              Disaster Won&apos;t Wait. Neither Do We.
             </h2>
             <p className="mt-4 text-white/80 max-w-2xl mx-auto">
-              Water, fire, mold, or sewage — our IICRC-certified team responds in 45 minutes, 24/7, with a free visual
+              Water, fire, mold, or sewage: our IICRC-certified team responds in 45 minutes, 24/7, with a free visual
               inspection and direct insurance billing. Call now or request your free inspection.
             </p>
             <div className="mt-8">
@@ -1054,14 +1068,14 @@ export default function Page() {
         </div>
       </footer>
 
-      {/* ── Sticky mobile CTA (form/contact only — no phone) ── */}
+      {/* ── Sticky mobile CTA (form/contact only, no phone) ── */}
       <div className="fixed bottom-0 inset-x-0 z-50 md:hidden bg-white border-t border-border p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
         <a href="#quote" className="w-full inline-flex items-center justify-center py-3 bg-orange text-white font-bold rounded-xl">
           Get Help Now
         </a>
       </div>
 
-      {/* ── Desktop floating pill (form/contact only — no phone) ── */}
+      {/* ── Desktop floating pill (form/contact only, no phone) ── */}
       <a
         href="#quote"
         className="fixed bottom-6 right-6 z-50 hidden md:inline-flex items-center gap-2 px-6 py-3.5 bg-orange hover:bg-orange-dark text-white font-bold rounded-full shadow-xl transition-all pulse-glow"
