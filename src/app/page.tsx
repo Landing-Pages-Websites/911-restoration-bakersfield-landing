@@ -588,8 +588,9 @@ export default function Page() {
               Water, Fire &amp; Mold Damage? We&apos;ll Be There in 45 Minutes.
             </h1>
             <p className="mt-5 text-lg text-white/80 max-w-xl">
+              Bakersfield water damage restoration and mold remediation for ceiling leaks, flooding, and mold growth.
               IICRC-certified, family-owned since 2018, and bilingual (¡Hablamos Español!). We provide a free visual
-              inspection and bill your insurance directly, so the cleanup starts fast and the stress stays low.
+              inspection and bill your insurance directly.
             </p>
             <ul className="mt-6 grid sm:grid-cols-2 gap-3 max-w-xl">
               {[
