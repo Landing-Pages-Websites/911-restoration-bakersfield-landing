@@ -19,8 +19,8 @@ import {
   StarIcon,
 } from "@/components/icons";
 
-const PHONE = "(661) 416-8390";
-const PHONE_HREF = "tel:+16614168390";
+const PHONE = "(661) 386-5265";
+const PHONE_HREF = "tel:+16613865265";
 
 /* ─── Declare optimizer global ───────────────────────────────── */
 declare global {
@@ -1022,7 +1022,7 @@ export default function Page() {
               },
               {
                 q: "What should I do first after water damage?",
-                a: "If it's safe, stop the water source and shut off electricity to affected areas, then move valuables to a dry spot. Avoid walking through standing water near outlets. Then call us at (661) 416-8390. The faster we extract and dry, the less damage spreads and the lower the cost of restoration.",
+                a: "If it's safe, stop the water source and shut off electricity to affected areas, then move valuables to a dry spot. Avoid walking through standing water near outlets. Then call us at (661) 386-5265. The faster we extract and dry, the less damage spreads and the lower the cost of restoration.",
               },
             ].map((f) => (
               <Reveal key={f.q}>
