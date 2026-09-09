@@ -1069,11 +1069,23 @@ export default function Page() {
         </div>
       </footer>
 
-      {/* ── Sticky mobile CTA (form/contact only, no phone) ── */}
-      <div className="fixed bottom-0 inset-x-0 z-50 md:hidden bg-white border-t border-border p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
-        <a href="#quote" className="w-full inline-flex items-center justify-center py-3 bg-orange text-white font-bold rounded-xl">
-          Get Help Now
-        </a>
+      {/* ── Sticky mobile CTA: Call Now (primary) + Request an Inspection ── */}
+      <div className="fixed bottom-0 inset-x-0 z-50 md:hidden bg-white border-t border-border px-3 pt-3 [padding-bottom:max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+        <div className="flex items-stretch gap-3">
+          <a
+            href={PHONE_HREF}
+            className="flex-1 min-h-[44px] inline-flex items-center justify-center gap-2 py-3 bg-orange hover:bg-orange-dark text-white font-bold text-sm rounded-xl shadow-lg transition-all"
+          >
+            <PhoneIcon className="w-5 h-5" />
+            Call Now
+          </a>
+          <a
+            href="#quote"
+            className="flex-1 min-h-[44px] inline-flex items-center justify-center py-3 bg-white border-2 border-navy/15 hover:border-orange text-navy font-bold text-sm text-center leading-tight rounded-xl transition-all"
+          >
+            Request an Inspection
+          </a>
+        </div>
       </div>
 
       {/* ── Desktop floating pill (form/contact only, no phone) ── */}
