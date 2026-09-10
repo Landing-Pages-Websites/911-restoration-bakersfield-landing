@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://call.911restorationbakersfield.com"),
   title: "Emergency Water, Fire & Mold Damage Restoration in Bakersfield, CA | 911 Restoration",
   description:
-    "24/7 emergency disaster restoration in Bakersfield & Kern County. 45-minute response, IICRC-certified, bilingual (Hablamos Español), free visual inspection, and direct insurance claim support. Water, fire & mold damage. Call (661) 386-5265.",
+    "24/7 emergency disaster restoration in Bakersfield & Kern County. 45-minute response, IICRC-certified, bilingual (Hablamos Español), free visual inspection, and direct insurance claim support. Water, fire & mold damage. Call (661) 416-8390.",
   openGraph: {
     title: "Emergency Water, Fire & Mold Damage Restoration in Bakersfield, CA | 911 Restoration",
     description:
-      "24/7 emergency disaster restoration in Bakersfield & Kern County. 45-minute response, IICRC-certified, bilingual (Hablamos Español), free visual inspection, and direct insurance claim support. Call (661) 386-5265.",
+      "24/7 emergency disaster restoration in Bakersfield & Kern County. 45-minute response, IICRC-certified, bilingual (Hablamos Español), free visual inspection, and direct insurance claim support. Call (661) 416-8390.",
     type: "website",
   },
 };
