@@ -689,7 +689,7 @@ export default function Page() {
                 title: "Sewage Cleanup",
                 body:
                   "Sewage backups are a serious biohazard that should never be handled alone. Our technicians safely extract contaminated water, then sanitize and decontaminate every affected surface using professional-grade equipment, restoring a safe, sanitary space for your family or staff.",
-                href: "#water-damage",
+                href: "#sewage-cleanup",
               },
               {
                 icon: <TruckIcon className="w-7 h-7" />,
@@ -730,23 +730,23 @@ export default function Page() {
       {/* ── Water damage spotlight ── */}
       <section id="water-damage" className="bg-white py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-          <Reveal className="order-2 lg:order-1">
+          <Reveal>
             <span className="text-orange font-bold uppercase tracking-wide text-sm">Water Damage Restoration</span>
             <h2 className="font-[family-name:var(--font-display-bold)] text-3xl md:text-4xl font-extrabold text-navy mt-2">
-              Fast Water Extraction &amp; Complete Structural Drying
+              Bakersfield Water Damage Cleanup — 24/7.
             </h2>
             <p className="text-text-muted mt-4 leading-relaxed">
-              Water spreads fast and damage compounds by the hour. The moment you call, our IICRC-certified crew is on
-              the way to stop the source, extract standing water, and dry your property to the studs, preventing the
-              warping, rot, and mold that turn a small leak into a major rebuild.
+              Ceiling leaks, burst pipes, and flooding demand a fast response. Our IICRC-certified crew handles water
+              extraction and complete structural drying, backed by a free visual inspection and direct insurance
+              support, so a small leak never turns into a major rebuild.
             </p>
             <ul className="mt-6 space-y-3">
               {[
-                "24/7 emergency water extraction",
-                "Advanced drying & dehumidification equipment",
-                "Moisture mapping to find hidden water",
-                "Proactive mold prevention treatment",
-                "Full insurance documentation & direct billing",
+                "Water extraction & standing-water removal",
+                "Complete structural drying & dehumidification",
+                "Free visual inspection",
+                "IICRC-certified technicians",
+                "Insurance documentation & direct billing support",
               ].map((b) => (
                 <li key={b} className="flex items-start gap-3 text-navy text-sm">
                   <CheckIcon className="w-5 h-5 text-orange shrink-0 mt-0.5" />
@@ -754,11 +754,28 @@ export default function Page() {
                 </li>
               ))}
             </ul>
+            <div className="mt-6 bg-bg-light border border-border rounded-2xl p-5">
+              <div className="flex text-orange mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <StarIcon key={i} className="w-4 h-4" />
+                ))}
+              </div>
+              <p className="text-text-muted text-sm leading-relaxed">&ldquo;{REVIEWS[2].text}&rdquo;</p>
+              <div className="mt-3 flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-orange/10 text-orange flex items-center justify-center font-bold text-sm">
+                  {REVIEWS[2].name.charAt(0)}
+                </div>
+                <div>
+                  <div className="font-bold text-navy text-sm">{REVIEWS[2].name}</div>
+                  <div className="text-text-light text-xs">Verified Review</div>
+                </div>
+              </div>
+            </div>
             <div className="mt-8">
               <DualCta center={false} label="Start My Water Cleanup" />
             </div>
           </Reveal>
-          <Reveal className="order-1 lg:order-2" delay={80}>
+          <Reveal delay={80}>
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-border">
               <Image src="/images/water-damage.jpg" alt="Water damage restoration and structural drying" width={1200} height={800} className="w-full h-full object-cover" />
             </div>
@@ -821,15 +838,18 @@ export default function Page() {
       {/* ── Mold remediation spotlight ── */}
       <section id="mold-remediation" className="bg-bg-light py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-          <Reveal className="order-2 lg:order-1">
+          <Reveal>
             <span className="text-orange font-bold uppercase tracking-wide text-sm">Mold Remediation</span>
             <h2 className="font-[family-name:var(--font-display-bold)] text-3xl md:text-4xl font-extrabold text-navy mt-2">
               Mold Remediation &amp; Removal in Bakersfield
             </h2>
             <p className="text-text-muted mt-4 leading-relaxed">
-              Mold thrives on hidden moisture and spreads fast. We contain the affected area, run HEPA filtration, and
-              apply antimicrobial treatment to eliminate mold at the source, restoring clean, healthy air so your
-              family or staff can breathe easy again.
+              Professional mold removal that eliminates mold at its source. Mold thrives on hidden moisture and spreads
+              fast, so we contain the affected area, run HEPA filtration, and apply antimicrobial treatment, restoring
+              clean, healthy air so your family or staff can breathe easy again.
+            </p>
+            <p className="text-text-muted mt-3 text-sm font-semibold">
+              Professional mold remediation. Standalone mold testing is not offered.
             </p>
             <ul className="mt-6 space-y-3">
               {[
@@ -860,9 +880,49 @@ export default function Page() {
               </a>
             </div>
           </Reveal>
-          <Reveal className="order-1 lg:order-2" delay={80}>
+          <Reveal delay={80}>
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-border">
               <Image src="/images/mold-removal.jpg" alt="Mold removal and remediation in a Bakersfield property" width={1200} height={800} className="w-full h-full object-cover" />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── Sewage backup spotlight ── */}
+      <section id="sewage-cleanup" className="bg-white py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+          <Reveal>
+            <span className="text-orange font-bold uppercase tracking-wide text-sm">Sewage Cleanup</span>
+            <h2 className="font-[family-name:var(--font-display-bold)] text-3xl md:text-4xl font-extrabold text-navy mt-2">
+              Sewage Backup Cleanup in Bakersfield.
+            </h2>
+            <p className="text-text-muted mt-4 leading-relaxed">
+              A sewage backup is a serious biohazard. Our IICRC-certified technicians safely extract contaminated
+              water, then sanitize and decontaminate every affected surface with professional-grade equipment before
+              restoring the space to a safe, sanitary condition for your family or staff.
+            </p>
+            <p className="text-text-muted mt-3 text-sm font-semibold">
+              Property cleanup after a sewage backup. Routine drain cleaning and septic tank pumping are not offered.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+              <a
+                href="#quote"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-orange hover:bg-orange-dark text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl"
+              >
+                Get Sewage Cleanup Help
+              </a>
+              <a
+                href={PHONE_HREF}
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white border-2 border-navy/15 hover:border-orange text-navy font-bold rounded-xl transition-all"
+              >
+                <PhoneIcon className="w-5 h-5 text-orange" />
+                {PHONE}
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={80}>
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-border">
+              <Image src="/images/water-damage.jpg" alt="Sewage backup cleanup and contaminated-water extraction in Bakersfield" width={1200} height={800} className="w-full h-full object-cover" />
             </div>
           </Reveal>
         </div>
