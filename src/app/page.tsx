@@ -729,7 +729,7 @@ export default function Page() {
 
       {/* ── Water damage spotlight ── */}
       <section id="water-damage" className="bg-white py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-3xl mx-auto px-4">
           <Reveal>
             <span className="text-orange font-bold uppercase tracking-wide text-sm">Water Damage Restoration</span>
             <h2 className="font-[family-name:var(--font-display-bold)] text-3xl md:text-4xl font-extrabold text-navy mt-2">
@@ -775,7 +775,7 @@ export default function Page() {
               <DualCta center={false} label="Start My Water Cleanup" />
             </div>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal delay={80} className="mt-12">
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-border">
               <Image src="/images/water-damage.jpg" alt="Water damage restoration and structural drying" width={1200} height={800} className="w-full h-full object-cover" />
             </div>
@@ -837,7 +837,7 @@ export default function Page() {
 
       {/* ── Mold remediation spotlight ── */}
       <section id="mold-remediation" className="bg-bg-light py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-3xl mx-auto px-4">
           <Reveal>
             <span className="text-orange font-bold uppercase tracking-wide text-sm">Mold Remediation</span>
             <h2 className="font-[family-name:var(--font-display-bold)] text-3xl md:text-4xl font-extrabold text-navy mt-2">
@@ -880,7 +880,7 @@ export default function Page() {
               </a>
             </div>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal delay={80} className="mt-12">
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-border">
               <Image src="/images/mold-removal.jpg" alt="Mold removal and remediation in a Bakersfield property" width={1200} height={800} className="w-full h-full object-cover" />
             </div>
@@ -890,7 +890,7 @@ export default function Page() {
 
       {/* ── Sewage backup spotlight ── */}
       <section id="sewage-cleanup" className="bg-white py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-3xl mx-auto px-4">
           <Reveal>
             <span className="text-orange font-bold uppercase tracking-wide text-sm">Sewage Cleanup</span>
             <h2 className="font-[family-name:var(--font-display-bold)] text-3xl md:text-4xl font-extrabold text-navy mt-2">
@@ -920,7 +920,7 @@ export default function Page() {
               </a>
             </div>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal delay={80} className="mt-12">
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-border">
               <Image src="/images/water-damage.jpg" alt="Sewage backup cleanup and contaminated-water extraction in Bakersfield" width={1200} height={800} className="w-full h-full object-cover" />
             </div>
