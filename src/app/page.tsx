@@ -546,7 +546,29 @@ const SERVICE_AREAS = [
 ];
 
 /* ─── Page ───────────────────────────────────────────────────── */
+/* ─── Direct-hash settling for the three service anchors ─────── */
+const SETTLE_ANCHORS = new Set(["water-damage", "mold-remediation", "sewage-cleanup"]);
+
+function alignAnchor(hash: string): void {
+  const id = hash.replace(/^#/, "");
+  if (!SETTLE_ANCHORS.has(id)) return;
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ block: "start" });
+}
+
 export default function Page() {
+  useEffect(() => {
+    const settle = (): void => alignAnchor(window.location.hash);
+    const onHashChange = (): void => alignAnchor(window.location.hash);
+    if (document.readyState === "complete") settle();
+    else window.addEventListener("load", settle, { once: true });
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener("load", settle);
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
+
   return (
     <main className="overflow-x-hidden lp-sticky-safe">
       {/* Sticky header: logo + CTA only (no nav links) */}
