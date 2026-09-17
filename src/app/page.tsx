@@ -210,15 +210,8 @@ function LeadForm({ id = "quote-form" }: { id?: string }) {
       return;
     }
 
-    const qualified =
-      form.isHomeowner === "Yes" &&
-      (form.timeframe === "ASAP / Emergency" || form.timeframe === "Within a few days");
-    const disqualificationReason =
-      form.isHomeowner !== "Yes"
-        ? "not_homeowner"
-        : form.timeframe === "Just researching"
-        ? "timeframe_researching"
-        : "";
+    const qualified = form.isHomeowner === "Yes";
+    const disqualificationReason = qualified ? "" : "not_homeowner";
 
     inFlightRef.current = true;
     setSubmitting(true);
@@ -422,26 +415,28 @@ function LeadForm({ id = "quote-form" }: { id?: string }) {
         </div>
 
         <div>
-          <label className={labelCls}>
+          <label htmlFor="isHomeowner" className={labelCls}>
             Are you the homeowner? <span className="text-red">*</span>
           </label>
-          <div className="grid grid-cols-2 gap-3">
-            {["Yes", "No"].map((opt) => (
-              <button
-                key={opt}
-                type="button"
-                onClick={() => setFieldValue("isHomeowner", opt)}
-                className={`py-2.5 rounded-lg text-sm font-semibold border-2 transition-all ${
-                  form.isHomeowner === opt
-                    ? "border-orange bg-orange/10 text-orange"
-                    : "border-border bg-bg-light text-text-muted hover:border-orange/40"
-                }`}
-              >
-                {opt}
-              </button>
-            ))}
-          </div>
-          <input type="hidden" name="isHomeowner" value={form.isHomeowner} />
+          <select
+            id="isHomeowner"
+            name="isHomeowner"
+            required
+            value={form.isHomeowner}
+            onChange={(e) => setFieldValue("isHomeowner", e.target.value)}
+            onBlur={() => handleBlur("isHomeowner")}
+            aria-invalid={errors.isHomeowner ? "true" : undefined}
+            aria-describedby={errors.isHomeowner ? "isHomeowner-error" : undefined}
+            className={`lp-field w-full px-4 py-3 border rounded-lg text-sm bg-bg-light focus:bg-white transition ${
+              errors.isHomeowner ? "lp-input-invalid" : "border-border"
+            } ${form.isHomeowner ? "text-navy" : "text-text-muted"}`}
+          >
+            <option value="" disabled>
+              Select an answer
+            </option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
           <FieldError name="isHomeowner" />
         </div>
 
